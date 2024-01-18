@@ -6,7 +6,7 @@ import {
   Routes,
 } from "react-router-dom";
 
-import { AuthContext } from "./contexts/auth.context.jsx";
+import { AuthContext } from "./contexts/AuthContext.jsx";
 import { Toaster } from "react-hot-toast";
 import InventoryCopilotRoutes from "./InventoryCopilotRoutes.jsx";
 import LoginPage from "./pages/LoginPage.jsx";

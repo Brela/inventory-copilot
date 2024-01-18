@@ -7,8 +7,8 @@ import {
   faQuestionCircle,
   faToggleOn,
 } from "@fortawesome/free-solid-svg-icons";
-import { InventoryContext } from "../contexts/inventory.context";
-import { OrdersContext } from "../contexts/orders.context";
+import { InventoryContext } from "../contexts/InventoryContext";
+import { OrdersContext } from "../contexts/OrdersContext";
 import { Tooltip } from "react-tooltip";
 import { twMerge } from "tailwind-merge";
 import { headerBg } from "../css/globalTailwindVars";

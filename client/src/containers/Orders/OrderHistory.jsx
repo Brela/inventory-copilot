@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { OrdersContext } from "../../contexts/orders.context";
-import { clearAllOrderHistory } from "../../services/ordersAPIcalls";
+import { OrdersContext } from "../../contexts/OrdersContext";
+import { clearAllOrderHistory } from "../../api/ordersAPI";
 import { useTable, useSortBy, usePagination } from "react-table";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {

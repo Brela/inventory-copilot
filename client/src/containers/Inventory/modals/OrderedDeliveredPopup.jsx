@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import "./orderedDeliveredPopup.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { OrdersContext } from "../../../contexts/orders.context";
+import { OrdersContext } from "../../../contexts/OrdersContext";
 
 export default function OrderedDeliveredPopup() {
   const {

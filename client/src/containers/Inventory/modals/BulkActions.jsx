@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
-import { InventoryContext } from "../../../contexts/inventory.context";
-import { deleteInventoryItems } from "../../../services/inventoryAPIcalls";
+import { InventoryContext } from "../../../contexts/InventoryContext";
+import { deleteInventoryItems } from "../../../api/inventoryAPI";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import calculateTotal from "../../../utils/calcShippingAndTotal";
 import {
@@ -9,7 +9,7 @@ import {
   faCartPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import ConfirmModal from "./ConfirmModal";
-import { createOrderItem } from "../../../services/ordersAPIcalls";
+import { createOrderItem } from "../../../api/ordersAPI";
 import { toast } from "react-hot-toast";
 
 export default function SelectedRowsModal({ isOpen, onClose, selectedRows }) {

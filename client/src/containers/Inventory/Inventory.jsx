@@ -6,7 +6,7 @@ import {
   useRowSelect,
   disableSortBy,
 } from "react-table";
-import { InventoryContext } from "../../contexts/inventory.context";
+import { InventoryContext } from "../../contexts/InventoryContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faArchive,
@@ -23,17 +23,14 @@ import {
   faTable,
 } from "@fortawesome/free-solid-svg-icons";
 import Order from "./modals/OrderNow";
-import { createOrderItem } from "../../services/ordersAPIcalls";
+import { createOrderItem } from "../../api/ordersAPI";
 import { useAutomaticOrders } from "../../hooks/useAutomaticOrders";
-import { OrdersContext } from "../../contexts/orders.context";
+import { OrdersContext } from "../../contexts/OrdersContext";
 import AddProductButtons from "./modals/AddProductButtons";
 import OrderHistory from "../Orders/OrderHistory";
 import ActiveOrders from "../Orders/ActiveOrders";
 import SelectedRowsModal from "./modals/BulkActions";
-import {
-  getInventoryList,
-  updateInventoryItem,
-} from "../../services/inventoryAPIcalls";
+import { getInventoryList, updateInventoryItem } from "../../api/inventoryAPI";
 import { EditableCell } from "./EditableCell";
 import DemoControls from "../DemoControls";
 import PaginationWrapper from "../../pages/InventoryCopilot/PaginationWrapper";

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
-import { createInventoryItem } from "../../../services/inventoryAPIcalls";
-import { InventoryContext } from "../../../contexts/inventory.context";
+import { createInventoryItem } from "../../../api/inventoryAPI";
+import { InventoryContext } from "../../../contexts/InventoryContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { toast } from "react-hot-toast";
 import {
@@ -33,7 +33,6 @@ const AddProductPopup = ({ onClose }) => {
     { label: "Order QTY", name: "orderQty", placeholder: "0" },
     { label: "Cost", name: "unitPrice", placeholder: "$ 0.00" },
   ];
-
 
   const handleAddProd_InputChange = (e) => {
     const { name, value } = e.target;
@@ -70,13 +69,13 @@ const AddProductPopup = ({ onClose }) => {
         },
       });
     }
-  }
+  };
 
   const clearProdInputFields = () => {
     setAddProdInfo((prevState) => {
       return Object.fromEntries(Object.keys(prevState).map((key) => [key, ""]));
     });
-  }
+  };
 
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">

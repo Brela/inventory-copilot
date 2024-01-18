@@ -3,8 +3,8 @@ import ReactApexChart from "react-apexcharts";
 const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
 import axios from "axios";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { AuthContext } from "../../contexts/auth.context";
-import { InventoryContext } from "../../contexts/inventory.context";
+import { AuthContext } from "../../contexts/AuthContext";
+import { InventoryContext } from "../../contexts/InventoryContext";
 import {
   faBoxOpen,
   faShippingFast,

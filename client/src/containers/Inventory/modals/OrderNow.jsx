@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useContext } from "react";
-import { OrdersContext } from "../../../contexts/orders.context";
-import { createOrderItem } from "../../../services/ordersAPIcalls";
+import { OrdersContext } from "../../../contexts/OrdersContext";
+import { createOrderItem } from "../../../api/ordersAPI";
 import calculateTotal from "../../../utils/calcShippingAndTotal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faXmark } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-hot-toast";
-import { InventoryContext } from "../../../contexts/inventory.context";
+import { InventoryContext } from "../../../contexts/InventoryContext";
 
 export default function Order({ handleClosePopup, popup, item, reloadOrders }) {
   const [orderQty, setOrderQty] = useState(0);
@@ -13,7 +13,7 @@ export default function Order({ handleClosePopup, popup, item, reloadOrders }) {
   const [totalCost, setTotalCost] = useState(0);
   const [data, setData] = useState(null);
   const [isError, setIsError] = useState(false);
-  const { setNeedStatsUpdate} = useContext(InventoryContext)
+  const { setNeedStatsUpdate } = useContext(InventoryContext);
   const { setDisplayOrderedDeliveredPopup, setOrderedDeliveryPopupContent } =
     useContext(OrdersContext);
 

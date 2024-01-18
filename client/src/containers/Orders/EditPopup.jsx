@@ -1,11 +1,10 @@
 import React, { useContext } from "react";
 import { handleOrderDelivery } from "../../utils/orderHelpers";
-import { InventoryContext } from "../../contexts/inventory.context";
-import { OrdersContext } from "../../contexts/orders.context";
+import { InventoryContext } from "../../contexts/InventoryContext";
+import { OrdersContext } from "../../contexts/OrdersContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
-import { toast } from 'react-hot-toast';
-
+import { toast } from "react-hot-toast";
 
 function EditPopup({ handleClosePopup, order }) {
   const { setTempInStock, setNeedStatsUpdate } = useContext(InventoryContext);
@@ -17,20 +16,20 @@ function EditPopup({ handleClosePopup, order }) {
 
   const handleDelivery = async (order) => {
     try {
-        await handleOrderDelivery(
-            order,
-            setTempInStock,
-            setDisplayOrderedDeliveredPopup,
-            setOrderedDeliveryPopupContent
-        );
-        toast.success("Order successfully delivered!"); 
-        handleClosePopup();
-        reloadOrders();
-        setNeedStatsUpdate(true);
+      await handleOrderDelivery(
+        order,
+        setTempInStock,
+        setDisplayOrderedDeliveredPopup,
+        setOrderedDeliveryPopupContent,
+      );
+      toast.success("Order successfully delivered!");
+      handleClosePopup();
+      reloadOrders();
+      setNeedStatsUpdate(true);
     } catch (error) {
-        toast.error("Error delivering the order. Please try again."); 
+      toast.error("Error delivering the order. Please try again.");
     }
-};
+  };
 
   return (
     <div className="fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">

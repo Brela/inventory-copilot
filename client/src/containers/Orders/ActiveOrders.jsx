@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { OrdersContext } from "../../contexts/orders.context";
+import { OrdersContext } from "../../contexts/OrdersContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faEdit,

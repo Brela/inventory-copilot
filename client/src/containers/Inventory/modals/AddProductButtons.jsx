@@ -1,8 +1,8 @@
 import React, { useState, useContext } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { InventoryContext } from "../../../contexts/inventory.context.jsx";
+import { InventoryContext } from "../../../contexts/InventoryContext.jsx";
 import { faFileImport, faBox, faPlus } from "@fortawesome/free-solid-svg-icons";
-import { sendCSVfile } from "../../../services/inventoryAPIcalls.js";
+import { sendCSVfile } from "../../../api/inventoryAPI.js";
 import AddProductPopup from "./AddProductPopup.jsx";
 import CSVModal from "./CsvModal.jsx";
 import ToolbarButton from "../../../components/ToolbarButton.jsx";

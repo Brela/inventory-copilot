@@ -1,8 +1,8 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { getInventoryList } from "../services/inventoryAPIcalls";
+import { getInventoryList } from "../api/inventoryAPI";
 import { useTempInStock } from "../hooks/useTempStock";
 
-import { AuthContext } from "./auth.context";
+import { AuthContext } from "./AuthContext";
 
 export const InventoryContext = createContext({
   userData: {},

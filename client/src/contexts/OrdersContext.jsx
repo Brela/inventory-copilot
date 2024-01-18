@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import { getOrdersList } from "../services/ordersAPIcalls";
+import { getOrdersList } from "../api/ordersAPI";
 import React from "react";
 
 export const OrdersContext = createContext({

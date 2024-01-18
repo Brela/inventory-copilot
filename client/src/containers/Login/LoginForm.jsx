@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react";
-import { AuthContext } from "../../contexts/auth.context";
-import { createUser, loginUser } from "../../services/userAPIcalls";
+import { AuthContext } from "../../contexts/AuthContext";
+import { createUser, loginUser } from "../../api/userAPI";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -9,7 +9,7 @@ import {
   faUserPlus,
 } from "@fortawesome/free-solid-svg-icons";
 import { toast } from "react-hot-toast";
-import { InventoryContext } from "../../contexts/inventory.context";
+import { InventoryContext } from "../../contexts/InventoryContext";
 
 export default function LoginForm() {
   const { setIsLoggedIn } = useContext(AuthContext);

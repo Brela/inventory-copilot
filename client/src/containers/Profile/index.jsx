@@ -1,38 +1,30 @@
-import {
-  faChevronUp,
-  faChevronDown,
-  faUser,
-  faGear,
-  faSignOutAlt,
-} from "@fortawesome/free-solid-svg-icons";
+import { faUser, faSignOutAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState, useEffect, useRef, useContext } from "react";
-import { AuthContext } from "../../contexts/auth.context";
+import { AuthContext } from "../../contexts/AuthContext";
 const API_URL = import.meta.env.VITE_REACT_APP_API_URL;
-import { logoutUser } from "../../services/userAPIcalls";
+import { logoutUser } from "../../api/userAPI";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import ProfileContent from "./ProfileContent";
-import SettingsContent from "./SettingsContent";
-import HeaderModal from "./HeaderModal";
-import NavigationBar from "../../pages/InventoryCopilot/NavigationBar";
+import ModalContainer from "./ModalContainer";
+
 import { Popover, Modal, Spinner } from "../../components";
 import { useQueryClient } from "react-query";
 
 const Profile = () => {
-  const [loggedInUser, setLoggedInUser] = useState({ username: "" });
-
-  const { isLoggedIn, setIsLoggedIn, authLoading } = useContext(AuthContext);
-  const [modalContent, setModalContent] = useState(null);
+  const {
+    isLoggedIn,
+    setIsLoggedIn,
+    authLoading,
+    fetchAuthStatus,
+    user,
+    setUser,
+  } = useContext(AuthContext);
   const [showModal, setShowModal] = useState(false);
   const closeModal = () => setShowModal(false);
 
   const queryClient = useQueryClient();
-
-  const openSettingsModal = () => {
-    setModalContent(<SettingsContent />);
-    setShowModal(true);
-  };
 
   // this is used for the dashboard demo
   /*   useEffect(() => {
@@ -44,7 +36,7 @@ const Profile = () => {
       await logoutUser();
 
       setIsLoggedIn(false);
-      setLoggedInUser({ username: "" });
+      setUser(null);
       localStorage.removeItem("lastSelectedDashboardId");
 
       // clear the demo queries and remove them
@@ -67,19 +59,7 @@ const Profile = () => {
   // console.log(loggedInUser?.id);
 
   useEffect(() => {
-    const fetchUser = async () => {
-      try {
-        const response = await axios.get(`${API_URL}/user/me`, {
-          headers: {},
-          withCredentials: true,
-        });
-        setLoggedInUser(response.data);
-      } catch (error) {
-        console.error("Error fetching user:", error);
-      }
-    };
-
-    fetchUser();
+    fetchAuthStatus();
   }, []);
 
   return (
@@ -93,7 +73,7 @@ const Profile = () => {
               </div>
             ) : (
               <span className="text-xl font-bold uppercase text-white">
-                {loggedInUser?.username?.charAt(0)}
+                {user?.username?.charAt(0) || "G"}
               </span>
             )}
           </div>
@@ -104,7 +84,6 @@ const Profile = () => {
             <Popover.CloseOnClickItem
               className="hover:text-gray-500"
               onClick={() => {
-                setModalContent(<ProfileContent loggedInUser={loggedInUser} />);
                 setShowModal(true);
               }}
             >
@@ -125,9 +104,9 @@ const Profile = () => {
         }
       />
 
-      <HeaderModal show={showModal} onClose={closeModal}>
-        {modalContent}
-      </HeaderModal>
+      <ModalContainer show={showModal} onClose={closeModal}>
+        {<ProfileContent user={user} />}
+      </ModalContainer>
     </div>
   );
 };
