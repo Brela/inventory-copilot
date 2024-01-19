@@ -8,8 +8,6 @@ import inventoryRoutes from "./modules/inventory/routes.js";
 import ordersRoutes from "./modules/orders/routes.js";
 import userRoutes from "./modules/users/routes.js";
 import authenticationRoutes from "./modules/auth/routes.js";
-import dashboardRoutes from "./modules/dashboards/routes.js";
-import customWidgetRoutes from "./modules/customWidgets/routes.js";
 import { authenticateJWT } from "./modules/auth/authenticateJWT.js";
 
 const app = express();
@@ -48,12 +46,9 @@ app.use("/authentication", authenticationRoutes);
 // for some reason, orders doesn't work when it is after authenticateJWT middleware
 app.use("/orders", ordersRoutes);
 
-// dashboard routes get authenticated separately, since get req is public for users to view demo
-app.use("/dashboards", dashboardRoutes);
 app.use("/user", userRoutes);
 
 app.use(authenticateJWT);
-app.use("/customWidgets", customWidgetRoutes);
 app.use("/inventory", inventoryRoutes);
 
 app.listen(PORT, () => {

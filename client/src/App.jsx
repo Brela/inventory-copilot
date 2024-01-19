@@ -8,7 +8,7 @@ import {
 
 import { AuthContext } from "./contexts/AuthContext.jsx";
 import { Toaster } from "react-hot-toast";
-import InventoryCopilotRoutes from "./InventoryCopilotRoutes.jsx";
+import InventoryCopilotRoutes from "./Routes.jsx";
 import LoginPage from "./pages/LoginPage.jsx";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
