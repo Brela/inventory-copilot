@@ -8,7 +8,7 @@ export const useTempInStock = (
   tempInStock,
   setTempInStock,
   useSelectedOnlyOn,
-  selectedItems
+  selectedItems,
 ) => {
   selectedItems = Array.from(selectedItems); // Ensure selectedItems is an array
 
@@ -26,6 +26,8 @@ export const useTempInStock = (
 
   useEffect(() => {
     let intervalId = null;
+    console.log(isUsingStock);
+    console.log(selectedItems);
     if (
       isUsingStock === true &&
       Array.isArray(selectedItems) &&
@@ -33,10 +35,10 @@ export const useTempInStock = (
     ) {
       decreaseStock();
     } else {
-      if (selectedItems.length <= 0 && isUsingStock) {
+      if (selectedItems.length === 0 && isUsingStock) {
         setIsUsingStock(false);
         toast.error(
-          "Must select one or more rows to use inventory with demo controls."
+          "Must select one or more rows to use inventory with demo controls.",
         );
         return;
       }

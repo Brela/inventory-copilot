@@ -40,6 +40,7 @@ export const useAutomaticOrders = (
         isUsingStock &&
         item.reorderAt != 0
       ) {
+        console.log("initiate order");
         // Create order item
         const orderInfo = {
           sku: item.sku,
@@ -52,9 +53,21 @@ export const useAutomaticOrders = (
           .then(() => {
             reloadOrders();
             // need to remove order delivered pop up and use context to display values in toast
-            // toast.success(`Order created for ${product.productName} with SKU: ${orderInfo.sku}, Quantity: ${item.orderQty}, and Total Cost: ${totalCost}`);
-            setOrderedDeliveryPopupContent(["o", item, orderInfo]);
-            setDisplayOrderedDeliveredPopup(true);
+            toast.success(
+              <div className="flex flex-col w-[300px]">
+                <h2>Order created</h2>
+                <div>SKU: {orderInfo.sku}</div>
+                <div>Quantity: {item.orderQty}</div>
+                <div>Total Cost: ${totalCost}</div>
+              </div>,
+              {
+                position: "bottom-center",
+                duration: 5000,
+              },
+            );
+
+            // setOrderedDeliveryPopupContent(["o", item, orderInfo]);
+            // setDisplayOrderedDeliveredPopup(true);
 
             // reloading inventory here will cause tempStock values to be lost unless we send update req first
           })

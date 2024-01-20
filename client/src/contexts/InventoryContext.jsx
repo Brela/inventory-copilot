@@ -85,6 +85,9 @@ export const InventoryProvider = ({ children }) => {
     useSelectedOnlyOn,
     selectedItems,
   );
+  useEffect(() => {
+    console.log(selectedItems);
+  }, [selectedItems]);
 
   // -----------------------  toggle selected items ---------------------
   const getInventoryIndex = (itemId) => {
@@ -92,27 +95,7 @@ export const InventoryProvider = ({ children }) => {
   };
 
   const toggleSelectedItem = (item) => {
-    setSelectedItems((prevSelectedItems) => {
-      const itemIndex = prevSelectedItems.findIndex((i) => i.id === item.id);
-      let newSelectedItems = [];
-
-      if (itemIndex >= 0) {
-        // Item is already selected, remove it
-        newSelectedItems = [
-          ...prevSelectedItems.slice(0, itemIndex),
-          ...prevSelectedItems.slice(itemIndex + 1),
-        ];
-      } else {
-        // Item is not selected, add it
-        newSelectedItems = [...prevSelectedItems, item];
-      }
-
-      // Save the new state to local storage
-      localStorage.setItem("selectedItems", JSON.stringify(newSelectedItems));
-
-      console.log(localStorage.getItem("selectedItems"));
-      return newSelectedItems;
-    });
+    console.log("here");
   };
 
   // --------------------- demo controls -------------------

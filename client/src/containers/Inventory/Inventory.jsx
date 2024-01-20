@@ -256,6 +256,7 @@ export default function Inventory() {
   );
 
   const selectedRowsData = React.useMemo(() => {
+    console.log("selectedFlatRows", selectedFlatRows);
     return selectedFlatRows.map((row) => row.original);
   }, [selectedFlatRows]);
 
@@ -284,6 +285,15 @@ export default function Inventory() {
       });
     }
   }, []);
+
+  useEffect(() => {
+    setSelectedItems(() => {
+      // Save the new state to local storage
+      localStorage.setItem("selectedItems", JSON.stringify(selectedRowsData));
+      // console.log(localStorage.getItem("selectedItems"));
+      return selectedRowsData;
+    });
+  }, [selectedRowsData]);
 
   return (
     <div>

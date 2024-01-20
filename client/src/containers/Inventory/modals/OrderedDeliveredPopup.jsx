@@ -14,7 +14,12 @@ export default function OrderedDeliveredPopup() {
   const [popupTimeoutId, setPopupTimeoutId] = useState(null);
 
   useEffect(() => {
-    if (displayOrderedDeliveredPopup) {
+    console.log(displayOrderedDeliveredPopup);
+    if (
+      displayOrderedDeliveredPopup ||
+      orderedDeliveryPopupContent.length > 0
+    ) {
+      console.log("displaying popup");
       if (popupTimeoutId) {
         clearTimeout(popupTimeoutId);
       }
