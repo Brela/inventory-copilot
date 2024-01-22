@@ -7,7 +7,7 @@ export const API = (url) => {
     baseURL: API_URL + url,
     headers: {
       "Content-Type": "application/json",
-      //   "Access-Control-Allow-Origin": API_URL,
+      "Access-Control-Allow-Origin": API_URL,
     },
     withCredentials: true,
   });
