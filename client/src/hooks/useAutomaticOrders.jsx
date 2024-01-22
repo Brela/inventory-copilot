@@ -53,7 +53,7 @@ export const useAutomaticOrders = (
           .then(() => {
             reloadOrders();
             // need to remove order delivered pop up and use context to display values in toast
-            toast.success(
+            /*       toast.success(
               <div className="flex flex-col w-[300px]">
                 <h2>Order created</h2>
                 <div>SKU: {orderInfo.sku}</div>
@@ -64,10 +64,10 @@ export const useAutomaticOrders = (
                 position: "bottom-center",
                 duration: 5000,
               },
-            );
+            ); */
 
-            // setOrderedDeliveryPopupContent(["o", item, orderInfo]);
-            // setDisplayOrderedDeliveredPopup(true);
+            setOrderedDeliveryPopupContent(["o", item, orderInfo]);
+            setDisplayOrderedDeliveredPopup(true);
 
             // reloading inventory here will cause tempStock values to be lost unless we send update req first
           })

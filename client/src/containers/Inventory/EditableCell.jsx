@@ -36,7 +36,7 @@ export const EditableCell = ({
   return (
     <div className="flex items-center">
       <input
-        className="bg-zinc-50 w-10 p-1 border rounded-lg border-zinc-300 outline-zinc-400"
+        className="pl-1 bg-white w-10 p-1 border rounded-lg border-zinc-300 outline-zinc-400"
         value={inputValue}
         onChange={(e) => {
           setInputValue(e.target.value);

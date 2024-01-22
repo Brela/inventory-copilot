@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useContext } from "react";
 import Profile from "../../containers/Profile/index.jsx";
 import Footer from "../../containers/Footer/Footer.jsx";
 import NavigationBar from "./NavigationBar.jsx";
@@ -10,7 +10,11 @@ import PaginationWrapper from "./PaginationWrapper.jsx";
 import { twMerge } from "tailwind-merge";
 import { dashboardBg, headerBg } from "../../css/globalTailwindVars.js";
 
+import { OrdersContext } from "../../contexts/OrdersContext.jsx";
+import OrderedDeliveredPopup from "../../containers/Inventory/modals/OrderedDeliveredPopup.jsx";
+
 function InventoryPage() {
+  const { displayOrderedDeliveredPopup } = useContext(OrdersContext);
   const inventoryListScrollRef = useRef(null);
   const ordersListScrollRef = useRef(null);
   const [rowHeightState, setRowHeightState] = useState(null);
@@ -19,6 +23,7 @@ function InventoryPage() {
   return (
     // <div className="flex flex-col 2xl:items-center">
     <div className="">
+      {displayOrderedDeliveredPopup && <OrderedDeliveredPopup />}
       {/* <div className=" max-w-screen-2xl mx-2 md:mx-4 mb-2 md:mb-3 px-2 md:px-6 flex gap-2 flex-col rounded-3xl"> */}
       <section className={twMerge("w-full  rounded-b-md px-6 bg-white")}>
         <div className="flex items-center justify-between ">

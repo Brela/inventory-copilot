@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import "./orderedDeliveredPopup.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { OrdersContext } from "../../../contexts/OrdersContext";
+import { OrdersContext } from "../../../contexts/OrdersContext.jsx";
 
 export default function OrderedDeliveredPopup() {
   const {
@@ -14,12 +14,10 @@ export default function OrderedDeliveredPopup() {
   const [popupTimeoutId, setPopupTimeoutId] = useState(null);
 
   useEffect(() => {
-    console.log(displayOrderedDeliveredPopup);
     if (
       displayOrderedDeliveredPopup ||
       orderedDeliveryPopupContent.length > 0
     ) {
-      console.log("displaying popup");
       if (popupTimeoutId) {
         clearTimeout(popupTimeoutId);
       }

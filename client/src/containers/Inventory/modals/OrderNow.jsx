@@ -66,12 +66,12 @@ export default function Order({ handleClosePopup, popup, item, reloadOrders }) {
       setIsError(false);
       reloadOrders();
       setNeedStatsUpdate(true);
-      // setOrderedDeliveryPopupContent(["o", item, orderInfo]);
-      // setDisplayOrderedDeliveredPopup(true);
+      setOrderedDeliveryPopupContent(["o", item, orderInfo]);
+      setDisplayOrderedDeliveredPopup(true);
       handleClosePopup(e);
 
       toast.dismiss(toastId);
-      toast.success("Order processed successfully.");
+      // toast.success("Order processed successfully.");
     } catch (error) {
       console.error(error);
       setIsError(true);

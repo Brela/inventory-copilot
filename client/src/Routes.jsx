@@ -10,7 +10,6 @@ import { InventoryProvider } from "./contexts/InventoryContext.jsx";
 import { OrdersProvider } from "./contexts/OrdersContext.jsx";
 
 export default function AppRouterContent() {
-  const { displayOrderedDeliveredPopup } = useContext(OrdersContext);
   const location = useLocation();
   const params = new URLSearchParams(location.search);
   const isDemo = params.get("demo") === "true";
@@ -19,12 +18,10 @@ export default function AppRouterContent() {
     <>
       <InventoryProvider>
         <OrdersProvider>
-          {displayOrderedDeliveredPopup && <OrderedDeliveredPopup />}
-
           <>
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/*" element={<Navigate to="/copilot" />} />
+              <Route path="/*" element={<Navigate to="/" />} />
             </Routes>
           </>
         </OrdersProvider>
